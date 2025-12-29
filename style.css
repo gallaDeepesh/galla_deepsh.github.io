@@ -1,0 +1,93 @@
+*{
+    font-family: monospace;
+}
+body{
+    margin: 0;
+    font-size: 25px;
+}
+
+h1{
+    font-size: 40px;
+    color: rgb(38, 134, 230);
+}
+header h1{
+    color: white;
+    margin: 0;
+}
+
+.button {
+    height: 30px;
+    border-radius: 10px;
+    border-width: thin;
+    cursor: pointer;
+}
+.button:hover{
+    color: white;
+    background-color: rgb(60, 148, 235);;
+}
+
+
+main{
+    padding: 10px;
+}
+
+.submit{
+    height: 30px;
+    border-radius: 10px;
+    border-width: thin;
+    background-color: rgb(38, 134, 230);;
+    cursor: pointer;
+}
+
+.submit:hover{
+    color: white;
+    background-color: darkgreen;
+}
+footer{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+.container {
+    max-width: max-content;    /* controls page width */
+    margin: 0 auto;      /* centers left-right */
+}
+
+section {
+    height: 100vh;
+    background-color: rgb(173, 216, 230);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+    align-items: center;     /* horizontal center */
+}
+
+header {
+    height: 100vh;
+    background-color: rgb(38, 134, 230);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
