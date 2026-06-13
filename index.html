@@ -1,101 +1,387 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Chinnu 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose:    #C2185B;
+    --blush:   #F8BBD9;
+    --deep:    #1A0A0E;
+    --wine:    #6D1C35;
+    --gold:    #E8C87A;
+    --cream:   #FFF5F8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── Petals ── */
+  #petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 1.2rem;
+    animation: fall linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── Hero ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.35em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--blush) 0%, var(--gold) 60%, var(--blush) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--blush);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .scroll-cue {
+    font-size: 1.6rem;
+    animation: bounce 1.6s ease-in-out infinite;
+    color: var(--rose);
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ── Photo ── */
+  #photo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, var(--deep) 0%, var(--wine) 50%, var(--deep) 100%);
+  }
+
+  .photo-frame {
+    width: min(340px, 88vw);
+    aspect-ratio: 3/4;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 60px rgba(194,24,91,0.35);
+  }
+
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #2d0a17 0%, #4a1228 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: var(--blush);
+  }
+  .photo-placeholder span { font-size: 3rem; }
+  .photo-placeholder p {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  /* Replace .photo-placeholder img when you add the real photo */
+  .photo-frame img { width:100%; height:100%; object-fit:cover; }
+
+  .photo-caption {
+    margin-top: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-align: center;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
+  /* ── Message ── */
+  #message {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  #message h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--blush);
+    margin-bottom: 2rem;
+  }
+
+  .letter {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #e8cdd6;
+    border-left: 2px solid var(--rose);
+    padding-left: 1.5rem;
+    text-align: left;
+  }
+
+  .letter p + p { margin-top: 1.2rem; }
+
+  .signature {
+    margin-top: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+  }
+
+  /* ── Music ── */
+  #music {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  #music-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  #music-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--rose);
+    background: rgba(26,10,14,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--blush);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 20px rgba(194,24,91,0.4);
+  }
+  #music-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(194,24,91,0.7); }
+  #music-btn.playing { animation: pulse-ring 2s ease-out infinite; }
+  @keyframes pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgba(194,24,91,0.6); }
+    70%  { box-shadow: 0 0 0 14px rgba(194,24,91,0); }
+    100% { box-shadow: 0 0 0 0 rgba(194,24,91,0); }
+  }
+
+  /* ── Candles ── */
+  #candles {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem 6rem;
+    gap: 1rem;
+  }
+  #candles h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--blush);
+    margin-bottom: 1rem;
+  }
+  .cake { font-size: clamp(5rem, 15vw, 9rem); filter: drop-shadow(0 0 30px #E8C87A88); }
+  .blow-hint {
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.7; margin-top: 0.5rem;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 60px; height: 1px;
+    background: var(--rose);
+    margin: 0 auto 3rem;
+    opacity: 0.5;
+  }
+
+  /* ── Fade-in on scroll ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .petal, #music-btn.playing, .scroll-cue { animation: none; }
+    .reveal { opacity:1; transform:none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-    <header>
 
-        <h1>Welcome to my portfolio </h1>
+<!-- Falling petals -->
+<div id="petals"></div>
 
-        <a href="#About">
-            <button class="button"> About </button>
-        </a>
+<!-- ── HERO ── -->
+<section id="hero">
+  <p class="eyebrow">A Special Day for a Special Person</p>
+  <h1>Happy Birthday,<br>My Love 💕</h1>
+  <p class="tagline">"Every moment with you feels like the universe's best gift to me."</p>
+  <div class="scroll-cue">↓</div>
+</section>
 
-        <a href="#Skills">
-            <button class="button"> Skills </button>
-        </a>
-
-        <a href="#Projects">
-            <button class="button"> Projects </button>
-        </a>
-
-        <a href="#Contact">
-            <button class="button"> Contact </button>
-        </a>
-    </header>
-
-    <main>
-        <section id="About">
-            <h1>About</h1>
-            <h2>Galla Deepesh</h2>
-            <p>I love turning ideas into interactive and visually appealing web experiences.</p>
-            <p>I am currently pursuing my B.Tech in Computer Science at GITAM University.</p>
-
-
-        </section>
-
-        <section id="Skills">
-            <h1>Skills</h1>
-            <ul>
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>MySQL</li>
-                <li>HTML, CSS, JavaScript</li>
-                <li>React Native</li>
-                <li>Git & GitHub</li>
-            </ul>
-
-        </section>
-
-        <section id="Projects">
-            <h1>Projects</h1>
-            <div class="project">
-                <h3>Online Voting System</h3>
-                <p>A full-stack Java web application that allows users to register, log in, and cast votes securely using Spring Boot and MySQL.</p>
-            </div>
-
-        </section>
-
-        <section id="Contact">
-            <h1>Contact Me</h1>
-
-            <form action="#" method="post">
-    
-            <label for="name:">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="email:">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label>Gender:</label><br>
-            <input type="radio"  name="gender" value="male">
-            <label for="male">Male</label><br>
-
-            <input type="radio"  name="gender" value="female">
-            <label for="female">Female</label><br><br>
-
-            <label for="comments">Comments:</label><br>
-            <textarea id="comments" name="comments" rows="4" cols="30"></textarea><br><br>
-
-            <button type="submit" class="submit">Submit</button>
-
-            </form>
-
-        </section>
-        
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Galla Deepesh. All rights reserved.</p>
-    </footer>
-
+<!-- ── PHOTO ── -->
+<section id="photo">
+  <div class="reveal photo-frame">
+    <!-- 🖼️ Replace this div with <img src="your-photo.jpg" alt="My Love"> when ready -->
+    <div class="photo-placeholder">
+      <span>🌹</span>
+      <img src="srinu1.jpeg" alt="My Love">
     </div>
-    
+  </div>
+  <p class="photo-caption reveal">"You are my today and all of my tomorrows."</p>
+</section>
+
+<!-- ── MESSAGE ── -->
+<section id="message">
+  <div class="divider"></div>
+  <h2 class="reveal">A letter from my heart</h2>
+  <div class="letter reveal">
+     <p>Happy birthday, my love. I never knew how beautiful life could be until you walked into mine. You deserve all the happiness in the world today and every day.</p>
+        
+        <p>On your birthday, I just want to remind you how deeply loved and appreciated you are. Thank you for being my peace, my joy, and my best friend. I love you more than words can say.</p>
+        
+        <p>Happy birthday to the girl who holds my heart. Watching you grow, laugh, and shine is my favorite part of life. May this year bring you as much happiness as you bring to me.</p>
+  </div>
+  <p class="signature reveal">— Forever yours 💌</p>
+</section>
+
+<!-- ── CAKE ── -->
+<section id="candles">
+  <div class="divider"></div>
+  <h2 class="reveal">Make a wish! 🌟</h2>
+  <div class="cake reveal" id="cake" title="Click to blow out the candles!">🎂</div>
+  <p class="blow-hint reveal">Click the cake to blow out the candles</p>
+</section>
+
+<!-- ── MUSIC PLAYER ── -->
+<div id="music">
+  <span id="music-label">♪ Play music</span>
+  <button id="music-btn" aria-label="Toggle music">▶</button>
+</div>
+
+<!-- 🎵 Add your MP3 file in the same folder and update the src below -->
+<audio id="bg-music" src="Edd_Sheeran_-_Perfect_(mp3.pm).mp3" loop></audio>
+
+<script>
+/* ─── PETALS ─── */
+(function spawnPetals() {
+  const container = document.getElementById('petals');
+  const emojis = ['🌸','🌹','🌷','✨','💕','💖'];
+  for (let i = 0; i < 28; i++) {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.textContent = emojis[i % emojis.length];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay   = (Math.random() * 10) + 's';
+    p.style.fontSize = (0.8 + Math.random() * 0.9) + 'rem';
+    container.appendChild(p);
+  }
+})();
+
+/* ─── SCROLL REVEAL ─── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+/* ─── CAKE CLICK ─── */
+document.getElementById('cake').addEventListener('click', function() {
+  this.style.filter = 'none';
+  this.textContent = '🎉';
+  document.querySelector('.blow-hint').textContent = '✨ Wish made! Your dream is on its way ✨';
+  confettiBurst();
+});
+
+function confettiBurst() {
+  const container = document.getElementById('petals');
+  const burst = ['🎊','🎉','⭐','💫','🌟','💖','🎈'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('span');
+    s.className = 'petal';
+    s.textContent = burst[i % burst.length];
+    s.style.left = (20 + Math.random() * 60) + 'vw';
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    s.style.animationDelay   = (Math.random() * 1) + 's';
+    s.style.fontSize = '1.4rem';
+    container.appendChild(s);
+    setTimeout(() => s.remove(), 5000);
+  }
+}
+
+/* ─── MP3 MUSIC PLAYER ─── */
+const audio = document.getElementById('bg-music');
+const btn   = document.getElementById('music-btn');
+const label = document.getElementById('music-label');
+
+btn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸';
+    btn.classList.add('playing');
+    label.textContent = '♪ Playing…';
+  } else {
+    audio.pause();
+    btn.textContent = '▶';
+    btn.classList.remove('playing');
+    label.textContent = '♪ Play music';
+  }
+});
+</script>
 </body>
 </html>

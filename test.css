@@ -1,0 +1,33 @@
+
+/* page reset */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+/* THIS is the key container */
+.photo-container {
+  position: relative;        /* hat will be positioned relative to photo */
+  width: 300px;              /* change this if your image is bigger */
+}
+
+/* big photo */
+.photo {
+  width: 100%;
+  display: block;
+}
+
+/* hat */
+.hat {
+  position: absolute;
+  top: -65px;                /* move up/down */
+  left: -29px;               /* move left/right */
+  width: 80px;               /* hat size */
+  transform: rotate(-15deg); /* optional */
+  pointer-events: none;
+}
